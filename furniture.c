@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<stdlib.h>
+
 int main()
 {
 
@@ -38,22 +38,23 @@ int main()
         switch(option)
         {
             case 1:
+                // Calculating amount by years
                 if(months >= 12){
-                        amount = 100 * months / 12;
+                        amount = 100 * (months / 12);
                         months = months % 12; 
                 }
                 else{
-                        //for first month
+                        // Getting amount for first month and decrementing months
                         amount = 20 ;
                         months--;
                 }
-                //for remaining months
+                // Getting amount for remaining months
                 amount += 12 * months;
                 break;
             
             case 2:
                 if(months >= 12){
-                        amount = 80 * months / 12;
+                        amount = 80 * (months / 12);
                         months = months % 12; 
                 }
                 else{
@@ -65,7 +66,7 @@ int main()
 
             case 3:
                 if(months >= 12){
-                        amount = 105 * months / 12;
+                        amount = 105 * (months / 12);
                         months = months % 12; 
                 }
                 else{
@@ -77,7 +78,7 @@ int main()
             
             case 4:
                 if(months >= 12){
-                        amount = 50 * months / 12;
+                        amount = 50 * (months / 12);
                         months = months % 12; 
                 }
                 else{
@@ -89,7 +90,7 @@ int main()
 
             case 5:
                 if(months >= 12){
-                        amount = 120 * months / 12;
+                        amount = 120 * (months / 12);
                         months = months % 12; 
                 }
                 else{
