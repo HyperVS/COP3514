@@ -102,4 +102,6 @@ int main()
         }
 
         printf("Amount due ($) : %d\n",amount);
+
+        return(0);
 }
