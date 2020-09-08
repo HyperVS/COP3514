@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 int main()
 {
@@ -43,6 +44,7 @@ int main()
                         amount = 100 * (months / 12);
                         months = months % 12; 
                 }
+                // Calculating amount by months
                 else{
                         // Getting amount for first month and decrementing months
                         amount = 20 ;
