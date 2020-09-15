@@ -16,7 +16,6 @@ int main(){
     // do while loop to take user input until user presses enter
     do{
         // get keyboard input from getchar() function
-        printf("Write anything and press ENTER");
         ch = getchar();
         // check if the entered character is a consonant or not
         if(((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) && !(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' ||
