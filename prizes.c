@@ -16,18 +16,18 @@ void game(char* prizes[]){
     int option;
     scanf("%d", &option); // stores choice of user
 
-    char prize[10];
     if(option==0){ // choice is 0
+        printf("Thank you for playing!\n");
         exit(0);
     }else{ // if choice is 1
-        int a = (rand()% 12 + 0); // generating random number between 0 and 11
+        int index = (rand()% 12 + 0); // generating random number between 0 and 11
         srand(time(NULL));
-        if(a!=5 && a!=11){
-            printf("%s", prizes[a]);
+        if(index!=5 && index!=11){
+            printf("%s", prizes[index]);
             exit(0);
-        }else if(a==11){
+        }else if(index==11){
             game(prizes);
-        }else if(a==5){
+        }else if(index==5){
             printf("You have won the jackpot and received 4000 points!\n");
             game(prizes);
         }
