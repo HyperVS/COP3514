@@ -14,8 +14,8 @@ void search_three(int *a1,int *a2,int n,int *num_three){
         
         if((*(a1+i) == *(a1+i+1)) && (*(a1+i+1) == *(a1+i+2))){ // If there are three consecutive numbers
             *(a2+index) = *(a1+i);
-            (*num_three)++;
-            index++;
+            (*num_three)++; // Increment counter for consecutive numbers
+            index++; // Increment index
         }
     }
   
