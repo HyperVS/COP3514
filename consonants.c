@@ -28,5 +28,7 @@ int main(){
     // output the consonant array
     printf("Consonants : ");
     printf("%s", consonant);
+
+    printf("\n");
     return 0;
 }
