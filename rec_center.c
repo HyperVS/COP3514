@@ -50,11 +50,11 @@ int main(void)
       ;
     switch (code) {
       case 'd': wait_list = delete(wait_list);
-                break;
+        break;
       case 'a': wait_list = append(wait_list);
 		break;
       case 'p': printList(wait_list);
-                break;
+        break;
       case 'q': save(wait_list);
 		clearList(wait_list);
 		return 0;
@@ -140,7 +140,6 @@ void save(struct request *list)
 
 	fclose(pFile);
 
-
 }
 
 struct request *delete(struct request *list){
@@ -150,16 +149,16 @@ struct request *delete(struct request *list){
 	char last[NAME_LEN+1];
 	char email[EMAIL_LEN+1];
 
-	printf("\nEnter the first name:\n");
+	printf("\nEnter the first name: ");
 	scanf("%s",first);
 
-	printf("\nEnter the last name:\n");
+	printf("\nEnter the last name: ");
 	scanf("%s",last);
 
-	printf("\nEnter the email address:\n");
+	printf("\nEnter the email address: ");
 	scanf("%s",email);
 
-	printf("\nEnter the class name:\n");
+	printf("\nEnter the class name: ");
 	scanf("%s",class);
 
 	struct request *p = list;
@@ -167,31 +166,36 @@ struct request *delete(struct request *list){
 
 	while(p != NULL) {
 
-		// check the data to be deleted
-		if((strcmp(list->first,first)==0) && (strcmp(list->last,last)==0) &&
-			(strcmp(list->email,email)==0) && (strcmp(list->class,class)==0)) {
+		// Check the data to be deleted
+		if((strcmp(p->first,first)==0) && (strcmp(p->last,last)==0) &&
+			(strcmp(p->email,email)==0) && (strcmp(p->class,class)==0)) {
 			break;
 		}
 		temp = p;
 		p = p->next;    
 	}
 
-	// if no data found , i.e p is NULL , return NULL
+	// If no data is found, return list 
 	if(p==NULL) {
 		printf("There is no matching request to be deleted.\n");
-		return p;
+		return list;
 	} 
 
-	//change the link as data is found , p is not null
+	// Change the link as data is found
 	temp->next = p->next;
+
+	if(p == list){
+		list = list->next;
+	}
 	
-	// delete node
+	// Delete node
 	free(p);
 	
-	//return the list head
+	// Return the list
 	return list;
 
 }
+
 struct request *append(struct request *list){
 
 	char class[CLASS_LEN+1];
@@ -224,33 +228,25 @@ struct request *append(struct request *list){
 	struct request *temp = list;
 
 	while(p != NULL) {
-		// check the data if already present
-		if((strcmp(list->first,first)==0) && (strcmp(list->last,last)==0) &&
-		(strcmp(list->email,email)==0) && (strcmp(list->class,class)==0)) {
-			break;
+		// Check if the data is already present
+		if((strcmp(p->first,first)==0) && (strcmp(p->last,last)==0) && (strcmp(p->email,email)==0) && (strcmp(p->class,class)==0)) {
+			printf("The data already exists in the waiting list.\n");
+			return list;
 		}
 		temp = p;
 		p = p->next;    
 	}
 
-	// if list is empty , make it as first node
+	// If the list is empty, make it as first node
 	if(list == NULL) {
 		list = new_node;
-
-		// return head of list
 		return list;
 	}
 
-	// data already exist , that is temp is not null
-	if(temp!=NULL) {
-		printf("request already existed in the waiting list");
-		return NULL;
-	}
-
-	// data is not present , temp is null , insert node at last of list
+	// Since data is not present, insert a new node at the bottom of the list
 	temp->next = new_node;
 
-	// return list head
+	// Return list
 	return list;
 
 }
@@ -276,15 +272,16 @@ void clearList(struct request *list)
 {
 
 	struct request * temp = list;
-
 	struct request * p = list;
-	while(p!=NULL) {
+
+	while(p!=NULL) 
+	{
     	temp = p;
     	p = p->next;
-    	// delete previous node
-    	free(temp);
-  }
 
+    	// Delete the previous node
+    	free(temp);
+	}
 }
 
 int read_line(char str[], int n)
