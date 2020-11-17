@@ -4,6 +4,11 @@
 #include "request.h"
 #include "readline.h"
 
+/**********************************************************
+ * load: read file "waiting_list.txt" and store the data  *
+ *       in a linked list and returns the linked list     *
+ **********************************************************/
+
 struct request *load(){
 	struct request * list= NULL;
 	struct request *prev, *new_node;
@@ -49,6 +54,11 @@ struct request *load(){
 	}
 	return list;
 }
+
+/**********************************************************
+ * append: append the new data to the linked list         *
+ *               if it doesn't already exist              *
+ **********************************************************/
 
 struct request *append(struct request *list){
 
@@ -105,6 +115,10 @@ struct request *append(struct request *list){
 
 }
 
+/**********************************************************
+ * delete: delete an existing record from the linked list *
+ **********************************************************/
+
 struct request *delete(struct request *list){
 
 	char class[CLASS_LEN+1];
@@ -159,6 +173,11 @@ struct request *delete(struct request *list){
 
 }
 
+/**********************************************************
+ * save: write to file "waiting_list.txt" with the data   *
+ *       in the linked list passed in as parameter        *
+ **********************************************************/
+
 void save(struct request *list)
 {
 
@@ -179,6 +198,11 @@ void save(struct request *list)
 	fclose(pFile);
 
 }
+
+/**********************************************************
+ * printList: print the data  in the linked list passed   *
+ * in as parameter                                        *
+ **********************************************************/
 
 void printList(struct request *list){
 

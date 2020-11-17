@@ -1,17 +1,15 @@
-all: waitinglist
+rec_classes: rec_classes.o request.o readline.o
 
-waitinglist: waiting_list.o request.o readline.o
+   gcc rec_classes.o request.o readline.o -o rec_classes -I
 
-   gcc waiting_list.o request.o readline.o -o waitinglist -I
+rec_classes.o: rec_classes.c
 
-waiting_list.o: waiting.c
+   gcc -c rec_classes.c -I
 
-   gcc -c writing_list.c -I
-
-request.o: request.c
+request.o: request.c request.h
 
    gcc -c request.c -I
 
-readline.o: readline.c
+readline.o: readline.c readline.h
 
    gcc -c readline.c -I
