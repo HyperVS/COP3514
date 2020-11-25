@@ -1,6 +1,6 @@
 /* 
-Title: animals.c
-Description: This program sorts dogs and cats by age in ascending order and stores them in seperate output files.
+Title: animals2.c
+Description: This program uses qsort to sort dogs and cats by age in ascending order and stores them in seperate output files.
 Author: Omar Abdelrahman
 */
 
@@ -18,26 +18,6 @@ struct animal{
 };
 
 int compare_age(const void *p, const void *q);
-
-// Function to sort animals based on age
-void sort_animals(struct animal list[], int n){
-
-    // Declaring variables
-    int i, j, min_index;
-
-    for (i = 0; i < n-1; i++){
-        // Find the minimum element in unsorted array
-        min_index = i;
-        for (j = i+1; j < n; j++)
-          if (list[j].age < list[min_index].age)
-            min_index = j;
-
-        // Swap the found minimum element with the first element
-        struct animal temp = list[min_index];
-        list[min_index] = list[i];
-        list[i] = temp;
-    }
-}
 
 // Main function
 int main(){
@@ -65,7 +45,6 @@ int main(){
 
     // Call the quick sort function
     qsort(animals, count, sizeof(struct animal), compare_age);
-    //sort_animals(animals, count);
 
     // Open files for writing
     FILE *out1, *out2;
